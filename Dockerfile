@@ -15,4 +15,4 @@ COPY . .
 RUN mkdir -p transcripts
 
 
-ENTRYPOINT ["python", "main.py"] 
+ENTRYPOINT ["python", "transcription.py"] 
