@@ -63,7 +63,7 @@ Build Docker Image
 docker build -t assemblyai-mcp-server .
 ```
 Run Docker Container
-make sure to set or export your api-key as an env using cmd line above.
+make sure to provide or input your api-key in the "" before running the command.
 ```bash
 docker run -v %cd%:/app -e API_KEY="" audio-transcriber transcribe " path/to/audio.mp3"
 ```
