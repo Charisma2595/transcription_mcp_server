@@ -1,0 +1,60 @@
+2025-05-22 23:47:16,541 - INFO - Created transcripts directory at /app/transcripts
+2025-05-22 23:47:16,543 - INFO - Starting transcription of OdumoduBlvck-Ft-Victony-Pity-This-Boy-(TrendyBeatz.com).mp3
+2025-05-22 23:47:17,690 - ERROR - Error during transcription: Illegal header value b'd782329182c645c887cd87ceb2f4dd23 '
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/usr/local/lib/python3.10/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/usr/local/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/usr/local/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "/usr/local/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+  File "/usr/local/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 86, in handle_request
+    self._send_request_headers(**kwargs)
+  File "/usr/local/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 144, in _send_request_headers
+    with map_exceptions({h11.LocalProtocolError: LocalProtocolError}):
+  File "/usr/local/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.LocalProtocolError: Illegal header value b'd782329182c645c887cd87ceb2f4dd23 '
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/main.py", line 87, in transcribe_audio
+    transcript = transcriber.transcribe(file_path, config=config)
+  File "/usr/local/lib/python3.10/site-packages/assemblyai/transcriber.py", line 1106, in transcribe
+    return self._impl.transcribe(
+  File "/usr/local/lib/python3.10/site-packages/assemblyai/transcriber.py", line 882, in transcribe
+    return self.transcribe_file(
+  File "/usr/local/lib/python3.10/site-packages/assemblyai/transcriber.py", line 858, in transcribe_file
+    audio_url = self.upload_file(data)
+  File "/usr/local/lib/python3.10/site-packages/assemblyai/transcriber.py", line 815, in upload_file
+    return api.upload_file(
+  File "/usr/local/lib/python3.10/site-packages/assemblyai/api.py", line 101, in upload_file
+    response = client.post(
+  File "/usr/local/lib/python3.10/site-packages/httpx/_client.py", line 1144, in post
+    return self.request(
+  File "/usr/local/lib/python3.10/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/usr/local/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/usr/local/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/usr/local/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/usr/local/lib/python3.10/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/usr/local/lib/python3.10/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.10/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.LocalProtocolError: Illegal header value b'd782329182c645c887cd87ceb2f4dd23 '
