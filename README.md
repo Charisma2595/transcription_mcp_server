@@ -75,26 +75,6 @@ uv run mcp dev transcription.py
 ```
 
 ## Json Format
-when connecting with a AI assitant like claude the config should be in this jason format.
+when connecting with an AI assitant like claude, the config should be in this jason format.
 
-<details> <summary>📄 Example: `mcpServers` Configuration</summary>
-
-{
-  "mcpServers": {
-    "Audio Transcription Service": {
-      "command": "C:\\Users\\HomePC\\Desktop\\mcp_task2\\.venv\\Scripts\\uv.EXE",
-      "args": [
-        "run",
-        "--with",
-        "mcp[cli]",
-        "mcp",
-        "run",
-        "C:\\Users\\HomePC\\Desktop\\mcp_task2\\transcription.py"
-      ],
-      "env": {
-        "API_KEY": "<your-api-key-here>"
-      }
-    }
-  }
-}
-</details>
+<pre> <details> <summary>📄 Example: <code>mcpServers</code> Configuration</summary> ```json { "mcpServers": { "Audio Transcription Service": { "command": "C:\\Users\\HomePC\\Desktop\\mcp_task2\\.venv\\Scripts\\uv.EXE", "args": [ "run", "--with", "mcp[cli]", "mcp", "run", "C:\\Users\\HomePC\\Desktop\\mcp_task2\\transcription.py" ], "env": { "API_KEY": "<your-api-key-here>" } } } } ``` </details> </pre>
