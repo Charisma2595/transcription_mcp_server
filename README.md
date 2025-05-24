@@ -67,3 +67,34 @@ make sure to provide or input your api-key in the "" before running the command.
 ```bash
 docker run -v %cd%:/app -e API_KEY="" audio-transcriber transcribe " path/to/audio.mp3"
 ```
+
+## Inspec With MCP Dev
+Run This Command To Inspect And Test The Fuctionality Of Your Tool on a Web Ui.
+```bash
+uv run mcp dev transcription.py
+```
+
+## Json Format
+when connecting with a AI assitant like claude the config should be in this jason format.
+
+<details> <summary>📄 Example: `mcpServers` Configuration</summary>
+
+{
+  "mcpServers": {
+    "Audio Transcription Service": {
+      "command": "C:\\Users\\HomePC\\Desktop\\mcp_task2\\.venv\\Scripts\\uv.EXE",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "C:\\Users\\HomePC\\Desktop\\mcp_task2\\transcription.py"
+      ],
+      "env": {
+        "API_KEY": "<your-api-key-here>"
+      }
+    }
+  }
+}
+</details>

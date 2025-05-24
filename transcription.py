@@ -1,10 +1,9 @@
 from mcp.server.fastmcp import FastMCP
 import os
 import assemblyai as aai
-import argparse
-import json
-import fire
+import sys
 import logging
+import json
 from datetime import datetime
 
 # Configure logging
@@ -29,22 +28,19 @@ def setup_logging():
 # Initialize logger
 logger = setup_logging()
 
-# Read API key either from env var or fallback to command-line argument
-api_key = os.getenv("API_KEY", "").strip()  
 
+# Get API key from environment variable
+api_key = os.getenv("API_KEY")
 if not api_key:
-    parser = argparse.ArgumentParser(description="Audio Transcription Server")
-    parser.add_argument("--api-key", required=True, help="AssemblyAI API key")
-    args = parser.parse_args()
-    api_key = args.api_key.strip()  
+    logger.error("No API key provided. Set it using API_KEY environment variable")
+    sys.exit(1)
 
-if not api_key:
-    logger.error("No API key provided")
-    raise ValueError("AssemblyAI API key is required. Set it using API_KEY environment variable or --api-key argument")
-
-
-aai.settings.api_key = api_key
-logger.info("AssemblyAI client initialized with API key")
+try:
+    aai.settings.api_key = api_key
+    logger.info("AssemblyAI client initialized with API key")
+except Exception as e:
+    logger.error(f"Failed to initialize AssemblyAI client: {str(e)}")
+    sys.exit(1)
 
 # Create an MCP server
 mcp = FastMCP("Audio Transcription Service")
@@ -137,7 +133,17 @@ def list_transcripts() -> str:
     return "\n".join(transcripts) or "No transcripts yet."
 
 if __name__ == "__main__":
-    fire.Fire({
-        "transcribe": transcribe_audio,
-        "list": list_transcripts
-    })
+    logger.info("Starting MCP server...")
+    logger.info(f"Current working directory: {os.getcwd()}")
+    
+    # Check if running in an MCP context
+    if os.getenv("MCP_MODE", "").lower() == "true":
+        logger.info("Running in MCP mode")
+        mcp.run()  
+    else:
+        logger.info("Running in CLI mode")
+        import fire
+        fire.Fire({
+            "transcribe": transcribe_audio,
+            "list": list_transcripts
+        })
