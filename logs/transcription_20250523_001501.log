@@ -1,8 +1,0 @@
-2025-05-23 00:15:01,566 - INFO - Created transcripts directory at C:\Users\HomePC\Desktop\mcp_task2\transcripts
-2025-05-23 00:15:01,567 - INFO - Starting transcription of OdumoduBlvck-Ft-Victony-Pity-This-Boy-(TrendyBeatz.com).mp3
-2025-05-23 00:15:09,008 - INFO - HTTP Request: POST https://api.assemblyai.com/v2/upload "HTTP/1.1 200 OK"
-2025-05-23 00:15:09,382 - INFO - HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
-2025-05-23 00:15:09,986 - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/997bfad8-0c7d-4193-b5c1-2aa705398092 "HTTP/1.1 200 OK"
-2025-05-23 00:15:13,466 - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/997bfad8-0c7d-4193-b5c1-2aa705398092 "HTTP/1.1 200 OK"
-2025-05-23 00:15:13,467 - INFO - Transcription completed successfully
-2025-05-23 00:15:13,470 - INFO - Transcript saved to C:\Users\HomePC\Desktop\mcp_task2\transcripts\transcript_OdumoduBlvck-Ft-Victony-Pity-This-Boy-(TrendyBeatz.com).mp3.json

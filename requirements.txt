@@ -1,6 +1,6 @@
-assemblyai>=0.17.0
-fastmcp>=0.1.0
-fire>=0.5.0
-python-dotenv>=1.0.0
-mcp[cli]>=0.1.0
-uv>=0.1.0 
+assemblyai
+fire
+python-dotenv
+mcp[cli]
+uv 
+nest_asyncio

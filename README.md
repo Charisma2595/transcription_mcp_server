@@ -6,6 +6,7 @@ An MCP (Model-Context-Protocol) server for transcribing MP3 audio files using th
 ## Features
 
 - Accepts .mp3 files via command-line interface using Fire
+- Accepts .mp3 file path provided via an AI assistant such as Claude or Cursor.
 - Transcribe MP3 audio files into JSON transcripts using AssemblyAI API
 - Speaker diarization (speaker labels) enabled
 - Save transcripts in a local "transcripts/" directory
@@ -51,31 +52,19 @@ set API_KEY="your_assemblyai_api_key"      # Windows CMD
 
 ## Usage
 
-### Command-line Interface
-Run the script 
-```bash
-uv run transcription.py transcribe path/to/audio.mp3
-```
-
-## Docker Usage
-Build Docker Image
-```bash
-docker build -t assemblyai-mcp-server .
-```
-Run Docker Container
-make sure to provide or input your api-key in the "" before running the command.
-```bash
-docker run -v %cd%:/app -e API_KEY="" audio-transcriber transcribe " path/to/audio.mp3"
-```
-
-## Inspec With MCP Dev
+### Inspec With MCP Dev
 Run This Command To Inspect And Test The Fuctionality Of Your Tool on a Web Ui.
 ```bash
-uv run mcp dev transcription.py
+uv run mcp dev mcp\server_transcription.py
 ```
 
+### connect and test server_transcription 
+Run the command to connect with claude
+```bash
+uv run mcp install mcp\server_transcription.py
+```
 ## Json Format
-when connecting with an AI assitant like claude, the config should be in this jason format.
+when connecting with an AI assitant like claude or cursor, the config should be in this jason format.
 
 ```json
 {
@@ -88,7 +77,7 @@ when connecting with an AI assitant like claude, the config should be in this ja
         "mcp[cli]",
         "mcp",
         "run",
-        "C:\\Users\\HomePC\\Desktop\\mcp_task2\\transcription.py"
+        "C:\\Users\\HomePC\\Desktop\\mcp_task2\\mcp\\server_transcription.py"
       ],
       "env": {
         "API_KEY": "<your-api-key-here>"
@@ -96,3 +85,30 @@ when connecting with an AI assitant like claude, the config should be in this ja
     }
   }
 }
+```
+
+## test client_transcription
+Run the command 
+```bash
+python  mcp\client_transcription.py "path/to/audio/file"
+```
+
+## Docker Usage
+Build Docker Image
+```bash
+docker build -t transcription-service -f run_with_docker/Dockerfile .
+```
+Run Docker Container
+```bash
+set API_KEY="your-api-key-here"
+
+docker run -d -p 8050:8050 -e API_KEY=%API_KEY% -v C:\Users:/mnt/users -v %CD%\transcripts:/app/transcripts -v %CD%\logs:/app/logs --dns 8.8.8.8 --name transcription-server transcription-service
+```
+run client
+```bash
+python run_with_docker\client.py "path/to/audio/file"
+``` 
+
+
+
+

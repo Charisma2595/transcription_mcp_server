@@ -1,8 +1,0 @@
-2025-05-22 23:48:53,645 - INFO - AssemblyAI client initialized with API key
-2025-05-22 23:48:53,662 - INFO - Starting transcription of OdumoduBlvck-Ft-Victony-Pity-This-Boy-(TrendyBeatz.com).mp3
-2025-05-22 23:49:01,488 - INFO - HTTP Request: POST https://api.assemblyai.com/v2/upload "HTTP/1.1 200 OK"
-2025-05-22 23:49:01,955 - INFO - HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
-2025-05-22 23:49:02,394 - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/354bfbcb-bdea-4ce8-8cd1-a38966266ab2 "HTTP/1.1 200 OK"
-2025-05-22 23:49:05,761 - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/354bfbcb-bdea-4ce8-8cd1-a38966266ab2 "HTTP/1.1 200 OK"
-2025-05-22 23:49:05,762 - INFO - Transcription completed successfully
-2025-05-22 23:49:05,774 - INFO - Transcript saved to /app/transcripts/transcript_OdumoduBlvck-Ft-Victony-Pity-This-Boy-(TrendyBeatz.com).mp3.json
