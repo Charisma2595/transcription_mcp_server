@@ -23,7 +23,7 @@ class MCPTranscriptionClient:
         """
         # Connect to the server with a timeout
         try:
-            async with asyncio.timeout(10):  # 10-second timeout for connection
+            async with asyncio.timeout(10):  
                 sse_transport = await self.exit_stack.enter_async_context(
                     sse_client(server_url)
                 )
@@ -35,7 +35,7 @@ class MCPTranscriptionClient:
                 # Initialize the connection
                 await self.session.initialize()
 
-                # List available tools
+               
                 tools_result = await self.session.list_tools()
                 print("\nConnected to Audio Transcription Service with tools:")
                 for tool in tools_result.tools:
@@ -60,7 +60,7 @@ class MCPTranscriptionClient:
             raise RuntimeError("Client is not connected to the server. Call connect_to_server first.")
 
         # Validate file existence locally
-        print(f"Checking host path: {file_path}")  # Debug
+        print(f"Checking host path: {file_path}") 
         if not os.path.exists(file_path):
             return f"Error: Audio file not found at '{file_path}' on the host. Ensure the path is correct."
         if not file_path.lower().endswith('.mp3'):
@@ -69,20 +69,20 @@ class MCPTranscriptionClient:
         # Convert Windows path to container path
         # Example: C:\Users\HomePC\Music\my_audio.mp3 -> /mnt/users/HomePC/Music/my_audio.mp3
         container_path = file_path
-        if file_path[1:3] == ':\\':  # Check for Windows drive letter (e.g., C:\)
+        if file_path[1:3] == ':\\':  
             # Remove drive letter and convert to container path
             parts = file_path.split(':', 1)
-            rest = parts[1].lstrip('\\/')  # Remove leading \ or /
+            rest = parts[1].lstrip('\\/')  
             if rest.startswith('Users\\') or rest.startswith('Users/'):
-                rest = rest[len('Users\\'):]  # Remove 'Users\' or 'Users/'
+                rest = rest[len('Users\\'):] 
             container_path = f"/mnt/users/{rest}"
         container_path = container_path.replace('\\', '/')
         container_path = os.path.normpath(container_path).replace('\\', '/')
-        print(f"Container path: {container_path}")  # Debug output
+        print(f"Container path: {container_path}")  
 
         # Call the transcribe_audio tool with container path
         try:
-            async with asyncio.timeout(60):  # 60-second timeout for transcription
+            async with asyncio.timeout(60):  
                 result = await self.session.call_tool(
                     "transcribe_audio",
                     arguments={"file_path": container_path}
@@ -115,7 +115,7 @@ async def main(audio_file: str):
     except Exception as e:
         print(f"Error in main: {str(e)}")
     finally:
-        # Clean up
+       
         await client.cleanup()
 
 if __name__ == "__main__":
