@@ -5,12 +5,12 @@ An MCP (Model-Context-Protocol) server for transcribing MP3 audio files using th
 
 ## Features
 
-- Accepts .mp3 files via command-line interface using Fire
+- Accepts .mp3 files via command-line interface
 - Accepts .mp3 file path provided via an AI assistant such as Claude or Cursor.
 - Transcribe MP3 audio files into JSON transcripts using AssemblyAI API
+- Timestamps for each transcribed segment with start and end times
 - Speaker diarization (speaker labels) enabled
-- Save transcripts in a local "transcripts/" directory
-- Easy-to-use command-line interface 
+- Save transcripts in a local "transcripts/" directory 
 - ready to run in a Docker container for portability and deployment
 
 
@@ -55,7 +55,7 @@ set API_KEY="your_assemblyai_api_key"      # Windows CMD
 ### Inspec With MCP Dev
 Run This Command To Inspect And Test The Fuctionality Of Your Tool on a Web Ui.
 ```bash
-uv run mcp dev mcp\server_transcription.py
+uv run mcp dev mcp/server_transcription.py
 ```
 
 ### connect and test server_transcription 
@@ -76,7 +76,7 @@ when connecting with an AI assitant like claude or cursor, the config should be 
         "C:\\Users\\HomePC\\Desktop\\mcp_task2\\mcp\\server_transcription.py"
       ],
       "env": {
-        "API_KEY": "INPUT YOUR API KEY HERE"
+        "API_KEY": "<input-your-api-key-here>"
       }
     }
   }
