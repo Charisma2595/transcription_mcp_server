@@ -70,17 +70,13 @@ when connecting with an AI assitant like claude or cursor, the config should be 
 {
   "mcpServers": {
     "Audio Transcription Service": {
-      "command": "C:\\Users\\HomePC\\Desktop\\mcp_task2\\.venv\\Scripts\\uv.EXE",
+      "command": "C:\\Users\\HomePC\\Desktop\\mcp_task2\\.venv\\Scripts\\python.exe",
       "args": [
-        "run",
-        "--with",
-        "mcp[cli]",
-        "mcp",
-        "run",
+        "-u",
         "C:\\Users\\HomePC\\Desktop\\mcp_task2\\mcp\\server_transcription.py"
       ],
       "env": {
-        "API_KEY": "<your-api-key-here>"
+        "API_KEY": "INPUT YOUR API KEY HERE"
       }
     }
   }
